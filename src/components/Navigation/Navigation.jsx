@@ -18,11 +18,15 @@ export default function Navigation() {
         <NavLink to="/" className={makeNavLinkClass}>
           Home
         </NavLink>
-        <NavLink to="Contacts" className={makeNavLinkClass}>
-          Contacts
-        </NavLink>
+        {isLoggedIn ? (
+          <NavLink to="Contacts" className={makeNavLinkClass}>
+            Contacts
+          </NavLink>
+        ) : (
+          <></>
+        )}
       </div>
-      {isLoggedIn ? <UserMenu /> :<AuthBar />}
+      {isLoggedIn ? <UserMenu /> : <AuthBar />}
     </div>
   );
 }

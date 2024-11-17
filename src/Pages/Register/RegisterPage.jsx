@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import css from "./RegisterPage.module.css";
 import * as Yup from "yup";
-import { register } from "../../redux/Auth/operations";
+import { register } from "../../redux/auth/operations";
 
 export default function Navigation() {
   const dispatch = useDispatch();
