@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import contactsReducer from "./contacts/contactsSlice";
 import filtersReducer from "./filters/filtersSlice";
-
+import userReduser from "./Auth/Slice";
 
 import {
   persistStore,
@@ -16,16 +16,17 @@ import {
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-  key: "contacts", // ключ для збереження стану "contacts" 
+  key: "token", // ключ для збереження стану "contacts"
   storage,
-  whitelist: ["items"], // зберігання лише масиву контактів
+  whitelist: "token", // зберігання лише масиву контактів
 };
 
-const persistedContactsReducer = persistReducer(persistConfig, contactsReducer);
+const persistedContactsReducer = persistReducer(persistConfig, userReduser);
 
 export const store = configureStore({
   reducer: {
-    contacts: persistedContactsReducer,
+    user: persistedContactsReducer,
+    contacts: contactsReducer,
     filter: filtersReducer,
   },
   middleware: (getDefaultMiddleware) =>
