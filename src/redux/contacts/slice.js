@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./contactsOps.js";
+import { fetchContacts, addContact, deleteContact } from "./operations.js";
 import { refreshUser } from "../auth/operations.js";
 
 const slice = createSlice({
