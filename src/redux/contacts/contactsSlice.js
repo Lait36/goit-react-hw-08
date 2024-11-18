@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./contactsOps.js";
+import { refreshUser } from "../auth/operations.js";
 
 const slice = createSlice({
   name: "contacts",
@@ -10,32 +11,15 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchContacts.pending, (state) => {
-        state.loading = true;
-      })
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(fetchContacts.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      .addCase(addContact.pending, (state) => {
-        state.loading = true;
-      })
       .addCase(addContact.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
         state.items.push(action.payload);
-      })
-      .addCase(addContact.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
-      .addCase(deleteContact.pending, (state) => {
-        state.loading = true;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.loading = false;
@@ -44,10 +28,32 @@ const slice = createSlice({
           (contacts) => contacts.id !== action.payload
         );
       })
-      .addCase(deleteContact.rejected, (state, action) => {
+      .addCase(refreshUser.fulfilled, (state) => {
+        state.items = [];
         state.loading = false;
-        state.error = action.payload;
-      });
+        state.error = null;
+      })
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.pending,
+          addContact.pending,
+          deleteContact.pending
+        ),
+        (state) => {
+          state.loading = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.rejected,
+          addContact.rejected,
+          deleteContact.rejected
+        ),
+        (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        }
+      );
   },
 });
 export default slice.reducer;

@@ -11,7 +11,7 @@ export default function AuthBar() {
       <NavLink to="register" className={makeNavLinkClass}>
         register
       </NavLink>
-      <NavLink to="logIn" className={makeNavLinkClass}>
+      <NavLink to="login" className={makeNavLinkClass}>
         Log in
       </NavLink>
     </div>
