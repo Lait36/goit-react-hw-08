@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../../Pages/Home/HomePage";
-import LogInPage from "../../Pages/LogIn/LogInPage";
-import RegisterPage from "../../Pages/Register/RegisterPage";
-import ContactsPage from "../../Pages/Contacts/ContactsPage";
+import HomePage from "../../pages/Home/HomePage";
+import LogInPage from "../../pages/LogIn/LogInPage";
+import RegisterPage from "../../pages/Register/RegisterPage";
+import ContactsPage from "../../pages/Contacts/ContactsPage";
 import Navigation from "../Navigation/Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "../../redux/auth/operations";
