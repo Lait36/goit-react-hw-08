@@ -4,7 +4,7 @@ import css from "./UserMenu.module.css";
 import { logOut } from "../../redux/auth/operations";
 
 export default function UserMenu() {
-  const dispatch = useDispatch(); // виправлено "disaptch" на "dispatch"
+  const dispatch = useDispatch(); 
   const user = useSelector(selectUser);
 
   return (

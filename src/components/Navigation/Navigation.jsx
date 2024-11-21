@@ -3,8 +3,7 @@ import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { useSelector } from "react-redux";
-import AuthBar from "../Auth/AuthBar";
-import UserMenu from "../UserMenu/UserMenu";
+
 
 export default function Navigation() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -26,7 +25,6 @@ export default function Navigation() {
           <></>
         )}
       </div>
-      {isLoggedIn ? <UserMenu /> : <AuthBar />}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { register, login, logOut, refreshUser } from "../auth/operations";
 
 const slice = createSlice({
-  name: "user",
+  name: "auth",
   initialState: {
     user: {
       name: null,
@@ -12,7 +12,7 @@ const slice = createSlice({
     isLoggedIn: false,
     isLoading: false,
     isRefreshing: false,
-    error: null, // Ініціалізуй стан помилки, якщо це потрібно
+    error: null, 
   },
   extraReducers: (builder) => {
     builder
