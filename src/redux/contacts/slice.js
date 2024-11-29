@@ -58,4 +58,4 @@ const slice = createSlice({
 });
 export default slice.reducer;
 
-export const selectContacts = (state) => state.contacts.items;
+
